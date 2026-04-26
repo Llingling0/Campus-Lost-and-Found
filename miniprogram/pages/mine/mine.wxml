@@ -1,0 +1,50 @@
+<view class="container">
+  <view class="card">
+    <button class="btn-primary" bindtap="wxLogin">微信登录</button>
+    <view class="sub">登录后可发布、认领、查看消息</view>
+    <view style="margin-top:12rpx;">
+      <button size="mini" bindtap="adminLogin">管理员登录</button>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="title">实名认证绑定</view>
+    <input placeholder="学号/工号" data-key="identityNo" bindinput="input" />
+    <input placeholder="真实姓名" data-key="realName" bindinput="input" />
+    <input placeholder="手机号" data-key="mobile" bindinput="input" />
+    <button class="btn-primary" bindtap="bindIdentity">提交绑定</button>
+  </view>
+
+  <view class="card">
+    <view class="title">我的认领</view>
+    <button bindtap="goClaims">查看认领记录</button>
+  </view>
+
+  <view class="card" wx:if="{{user}}">
+    <view class="title">我的信息</view>
+    <view class="sub">昵称：{{user.nickname || '-'}}</view>
+    <view class="sub">姓名：{{user.real_name || '-'}}</view>
+    <view class="sub">手机号：{{user.mobile || '-'}}</view>
+
+    <view wx:if="{{user.role===2}}" style="margin-top:16rpx;">
+      <button class="btn-primary" bindtap="goAdmin">管理员入口</button>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="title">我的发布</view>
+    <block wx:for="{{myPosts}}" wx:key="id">
+      <view class="sub">{{item.title}}（
+        {{item.status===0?'草稿':item.status===1?'待审核':item.status===2?'已发布':item.status===3?'已驳回':item.status===4?'已认领':item.status===5?'已过期':item.status===6?'已下架':'未知'}}
+        ）</view>
+      <view style="display:flex;gap:12rpx;margin-top:12rpx;flex-wrap:wrap;">
+        <button size="mini" data-id="{{item.id}}" bindtap="goPostDetail">详情</button>
+        <block wx:if="{{item.status===0 || item.status===3}}">
+          <button size="mini" data-id="{{item.id}}" bindtap="editPost">编辑</button>
+          <button size="mini" class="btn-primary" data-id="{{item.id}}" bindtap="submitPost">提交审核</button>
+          <button size="mini" data-id="{{item.id}}" bindtap="deletePost">删除</button>
+        </block>
+      </view>
+    </block>
+  </view>
+</view>

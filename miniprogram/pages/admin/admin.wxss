@@ -1,0 +1,69 @@
+/* admin styles */
+
+.loading-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80rpx 0;
+}
+
+/* 全景监控看板样式 */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16rpx;
+}
+
+.stat-item {
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  padding: 20rpx 16rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-num {
+  font-size: 36rpx;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 8rpx;
+}
+
+.stat-extra {
+  font-size: 20rpx;
+  color: #bbb;
+  margin-top: 4rpx;
+}
+
+.stat-total .stat-num { color: #409eff; }
+.stat-pending .stat-num { color: #e6a23c; }
+.stat-found .stat-num { color: #67c23a; }
+.stat-user .stat-num { color: #909399; }
+
+/* 异常提醒样式 */
+.alert-card {
+  border: 1rpx solid #faecd8;
+}
+
+.alert-item {
+  padding: 12rpx 16rpx;
+  border-radius: 8rpx;
+  margin-top: 8rpx;
+  font-size: 26rpx;
+}
+
+.alert-danger {
+  background: #fef0f0;
+  color: #f56c6c;
+}
+
+.alert-warning {
+  background: #fdf6ec;
+  color: #e6a23c;
+}

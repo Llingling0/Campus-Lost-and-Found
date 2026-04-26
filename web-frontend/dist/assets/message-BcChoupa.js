@@ -1,0 +1,1 @@
+import{y as t}from"./index-CeGIb--N.js";function a(n){return t.get("/notifications",{params:n})}function s(n){return t.post(`/notifications/${n}/read`)}function o(){return t.post("/notifications/read-all")}function i(){return t.get("/announcements")}export{a,s as b,i as g,o as m};

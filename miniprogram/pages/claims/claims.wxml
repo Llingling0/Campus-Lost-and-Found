@@ -1,0 +1,13 @@
+<view class="container">
+  <block wx:for="{{list}}" wx:key="id">
+    <view class="card">
+      <view class="title">申请号：{{item.apply_no}}</view>
+      <view class="sub">
+        状态：
+        {{item.status===1?'待处理':item.status===2?'已通过':item.status===3?'已拒绝':item.status===4?'已超时驳回':'未知'}}
+      </view>
+      <view class="sub">物品：{{item.post_title || '-'}}</view>
+      <view class="sub">验证信息：{{item.verify_desc || '-'}}</view>
+    </view>
+  </block>
+</view>
