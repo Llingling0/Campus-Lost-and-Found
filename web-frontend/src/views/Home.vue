@@ -19,7 +19,12 @@
           </template>
         </el-input>
         <div class="quick-links">
-          <el-tag v-for="cat in categories" :key="cat.id" @click="handleCategoryClick(cat.id)">
+          <el-tag
+            v-for="cat in categories"
+            :key="cat.id"
+            :class="{ active: postType === cat.id }"
+            @click="handleCategoryClick(cat.id)"
+          >
             {{ cat.name }}
           </el-tag>
         </div>
@@ -189,14 +194,15 @@ onMounted(() => {
 .home-page {
   max-width: 1400px;
   margin: 0 auto;
+  animation: fadeInUp 0.5s ease;
 }
 
 .search-section {
   margin-bottom: 24px;
 
   .search-card {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: #fff;
+    background: linear-gradient(135deg, #b8d8ff 0%, #d8c6ff 55%, #ffe0ef 100%);
+    color: #334155;
     text-align: center;
     padding: 40px 20px;
 
@@ -207,7 +213,7 @@ onMounted(() => {
 
     .subtitle {
       font-size: 14px;
-      opacity: 0.9;
+      color: #64748b;
       margin-bottom: 24px;
     }
 
@@ -224,12 +230,21 @@ onMounted(() => {
 
       .el-tag {
         cursor: pointer;
-        background: rgba(255,255,255,0.2);
-        color: #fff;
-        border-color: transparent;
+        background: rgba(255, 255, 255, 0.78);
+        color: #5b5aa8;
+        border-color: rgba(124, 117, 214, 0.2);
+        transition: all 0.25s ease;
 
         &:hover {
-          background: rgba(255,255,255,0.3);
+          transform: translateY(-2px);
+          background: #ffffff;
+          box-shadow: 0 8px 16px rgba(116, 100, 180, 0.16);
+        }
+
+        &.active {
+          color: #fff;
+          background: linear-gradient(135deg, #8a8cf8, #b18ffb);
+          border-color: transparent;
         }
       }
     }
@@ -237,6 +252,12 @@ onMounted(() => {
 }
 
 .content-section {
+  :deep(.el-card) {
+    border: 1px solid #eef2ff;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(153, 168, 206, 0.12);
+  }
+
   .card-header {
     display: flex;
     justify-content: space-between;
@@ -248,16 +269,19 @@ onMounted(() => {
       display: flex;
       gap: 16px;
       padding: 16px 0;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid #edf2f7;
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all 0.25s ease;
 
       &:last-child {
         border-bottom: none;
       }
 
       &:hover {
-        background: #f9f9f9;
+        background: linear-gradient(90deg, #f7f9ff 0%, #fff7fb 100%);
+        border-radius: 12px;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(156, 163, 175, 0.14);
       }
 
       .post-image {
@@ -266,7 +290,7 @@ onMounted(() => {
         flex-shrink: 0;
         border-radius: 8px;
         overflow: hidden;
-        background: #f5f5f5;
+        background: #f3f7ff;
 
         .el-image {
           width: 100%;
@@ -279,7 +303,7 @@ onMounted(() => {
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #ccc;
+          color: #aab4d6;
           font-size: 32px;
         }
       }
@@ -301,7 +325,7 @@ onMounted(() => {
           display: flex;
           gap: 16px;
           font-size: 13px;
-          color: #999;
+          color: #8c94aa;
           margin-bottom: 8px;
 
           span {
@@ -313,7 +337,7 @@ onMounted(() => {
 
         .post-desc {
           font-size: 14px;
-          color: #666;
+          color: #5f667d;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
@@ -333,7 +357,7 @@ onMounted(() => {
     .announcement-list {
       .announcement-item {
         padding: 12px 0;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid #edf2f7;
 
         &:last-child {
           border-bottom: none;
@@ -349,10 +373,20 @@ onMounted(() => {
 
         .announcement-time {
           font-size: 12px;
-          color: #999;
+          color: #8c94aa;
         }
       }
     }
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 </style>
