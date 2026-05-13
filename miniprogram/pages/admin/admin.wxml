@@ -1,0 +1,81 @@
+<view class="container">
+  <!-- 加载状态 -->
+  <view wx:if="{{loading}}" class="loading-wrap">
+    <text class="sub">加载中...</text>
+  </view>
+
+  <view wx:else>
+    <!-- 用户信息 -->
+    <view class="card" wx:if="{{user}}">
+      <view class="title">管理员：{{user.real_name || user.nickname}}</view>
+    </view>
+
+    <!-- 全景监控看板 -->
+    <view class="card" wx:if="{{dashboard}}">
+      <view class="title">监控看板</view>
+      <view class="stats-grid">
+        <view class="stat-item stat-total">
+          <text class="stat-num">{{dashboard.stats.totalPosts || 0}}</text>
+          <text class="stat-label">总发布</text>
+          <text class="stat-extra">今日{{dashboard.stats.todayPosts || 0}}</text>
+        </view>
+        <view class="stat-item stat-pending">
+          <text class="stat-num">{{dashboard.stats.pendingCount || 0}}</text>
+          <text class="stat-label">待审核</text>
+          <text class="stat-extra">认领{{dashboard.stats.pendingClaimCount || 0}}</text>
+        </view>
+        <view class="stat-item stat-found">
+          <text class="stat-num">{{dashboard.stats.foundPosts || 0}}</text>
+          <text class="stat-label">已找到</text>
+          <text class="stat-extra">率{{dashboard.stats.claimRate || 0}}%</text>
+        </view>
+        <view class="stat-item stat-user">
+          <text class="stat-num">{{dashboard.stats.totalUsers || 0}}</text>
+          <text class="stat-label">用户数</text>
+          <text class="stat-extra">失物{{dashboard.stats.lostCount || 0}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 异常提醒 -->
+    <view class="card alert-card" wx:if="{{dashboard && (dashboard.stats.timeoutClaims > 0 || dashboard.stats.expiredPosts > 0)}}">
+      <view class="title">异常提醒</view>
+      <view wx:if="{{dashboard.stats.timeoutClaims > 0}}" class="alert-item alert-danger">
+        <text>超时认领：{{dashboard.stats.timeoutClaims}} 条，需立即处理</text>
+      </view>
+      <view wx:if="{{dashboard.stats.expiredPosts > 0}}" class="alert-item alert-warning">
+        <text>过期信息：{{dashboard.stats.expiredPosts}} 条</text>
+      </view>
+    </view>
+
+    <!-- 待审核发布 -->
+    <view class="card">
+      <view class="title">待审核发布 ({{pendingPosts.length}})</view>
+      <block wx:for="{{pendingPosts}}" wx:key="id">
+        <view class="sub" style="margin-top:12rpx;">{{item.title}}（{{item.post_type===1?'失物':'招领'}}）</view>
+        <view class="sub">地点：{{item.occur_location || '-'}}</view>
+        <view style="display:flex;gap:12rpx;margin-top:12rpx;flex-wrap:wrap;">
+          <button size="mini" data-id="{{item.id}}" bindtap="approvePost">通过</button>
+          <button size="mini" class="btn-primary" data-id="{{item.id}}" bindtap="rejectPost">驳回</button>
+          <button size="mini" data-id="{{item.id}}" bindtap="deletePost">删除</button>
+        </view>
+      </block>
+      <view wx:if="{{!pendingPosts || pendingPosts.length===0}}" class="sub" style="margin-top:12rpx;color:#888;">暂无待审核</view>
+    </view>
+
+    <!-- 待处理认领 -->
+    <view class="card">
+      <view class="title">待处理认领 ({{pendingClaims.length}})</view>
+      <block wx:for="{{pendingClaims}}" wx:key="id">
+        <view class="sub" style="margin-top:12rpx;">申请号：{{item.apply_no}}</view>
+        <view class="sub">物品：{{item.post_title || '-'}}</view>
+        <view class="sub">验证信息：{{item.verify_desc || '-'}}</view>
+        <view style="display:flex;gap:12rpx;margin-top:12rpx;flex-wrap:wrap;">
+          <button size="mini" data-id="{{item.id}}" bindtap="approveClaim">通过</button>
+          <button size="mini" class="btn-primary" data-id="{{item.id}}" bindtap="rejectClaim">拒绝</button>
+        </view>
+      </block>
+      <view wx:if="{{!pendingClaims || pendingClaims.length===0}}" class="sub" style="margin-top:12rpx;color:#888;">暂无待处理</view>
+    </view>
+  </view>
+</view>

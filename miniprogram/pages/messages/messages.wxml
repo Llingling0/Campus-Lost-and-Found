@@ -1,0 +1,9 @@
+<view class="container">
+  <block wx:for="{{list}}" wx:key="id">
+    <view class="card" data-id="{{item.id}}" bindtap="readOne">
+      <view class="title">{{item.title}}</view>
+      <view class="sub">{{item.content}}</view>
+      <view class="sub">{{item.created_at}} {{item.is_read===1?'(已读)':'(未读)'}}</view>
+    </view>
+  </block>
+</view>

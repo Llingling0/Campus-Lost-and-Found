@@ -1,0 +1,114 @@
+/* 详情页样式 */
+.container {
+  padding: 20rpx;
+  background: #f5f6f8;
+  min-height: 100vh;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.title {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.sub {
+  font-size: 28rpx;
+  color: #666;
+  margin-top: 12rpx;
+  line-height: 1.6;
+}
+
+/* 图片区域 */
+.image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+  margin-top: 24rpx;
+}
+
+.image-gallery image {
+  width: 200rpx;
+  height: 150rpx;
+  border-radius: 8rpx;
+  background: #f5f5f5;
+}
+
+/* 元信息 */
+.meta-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+  margin-top: 16rpx;
+  padding: 16rpx;
+  background: #f9f9f9;
+  border-radius: 8rpx;
+}
+
+.meta-item {
+  font-size: 26rpx;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 6rpx;
+}
+
+/* 输入框 */
+input {
+  background: #f7f8fa;
+  border-radius: 10rpx;
+  padding: 14rpx;
+  margin: 10rpx 0;
+  font-size: 28rpx;
+}
+
+/* 操作按钮 */
+.action-btn {
+  margin-top: 24rpx;
+  width: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border: none;
+  font-size: 30rpx;
+  padding: 24rpx 0;
+  border-radius: 8rpx;
+}
+
+.action-btn:active {
+  opacity: 0.8;
+}
+
+/* 相关推荐 */
+.recommend-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.recommend-item {
+  padding: 16rpx;
+  background: #fafafa;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.recommend-item:active {
+  background: #f0f0f0;
+}
+
+/* 空状态 */
+.empty-tip {
+  text-align: center;
+  padding: 60rpx 0;
+  color: #999;
+  font-size: 28rpx;
+}

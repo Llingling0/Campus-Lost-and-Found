@@ -1,0 +1,120 @@
+.container {
+  padding: 24rpx;
+  background: #f5f6f8;
+  min-height: 100vh;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 32rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.04);
+}
+
+.title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 24rpx;
+}
+
+.form-group {
+  margin-bottom: 24rpx;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 200rpx;
+  background: #f5f6f8;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  font-size: 28rpx;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.char-count {
+  text-align: right;
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 8rpx;
+}
+
+.submit-btn {
+  width: 100%;
+  background: #0b6cff;
+  color: #fff;
+  font-size: 30rpx;
+  font-weight: 600;
+  border-radius: 12rpx;
+  padding: 24rpx 0;
+}
+
+.feedback-item {
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+.feedback-item:last-child {
+  border-bottom: none;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.status-tag {
+  font-size: 24rpx;
+  padding: 4rpx 16rpx;
+  border-radius: 8rpx;
+}
+.status-tag.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+.status-tag.replied {
+  background: #d4edda;
+  color: #155724;
+}
+
+.time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.content {
+  font-size: 28rpx;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 16rpx;
+}
+
+.reply {
+  background: #e8f5e9;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-top: 12rpx;
+}
+
+.reply-title {
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #2e7d32;
+  margin-bottom: 8rpx;
+}
+
+.reply-content {
+  font-size: 26rpx;
+  color: #555;
+  line-height: 1.5;
+}
+
+.empty {
+  text-align: center;
+  color: #999;
+  font-size: 28rpx;
+  padding: 48rpx 0;
+}

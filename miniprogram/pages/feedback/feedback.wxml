@@ -1,0 +1,39 @@
+<view class="container">
+  <!-- 提交反馈 -->
+  <view class="card">
+    <view class="title">提交反馈</view>
+    <view class="form-group">
+      <textarea
+        class="textarea"
+        placeholder="请描述您遇到的问题或建议..."
+        value="{{content}}"
+        bindinput="onContentInput"
+        maxlength="500"
+        auto-height
+      />
+      <view class="char-count">{{content.length || 0}}/500</view>
+    </view>
+    <button class="submit-btn" bindtap="submitFeedback" loading="{{submitting}}">提交反馈</button>
+  </view>
+
+  <!-- 我的反馈 -->
+  <view class="card">
+    <view class="title">我的反馈</view>
+    <block wx:for="{{list}}" wx:key="id">
+      <view class="feedback-item">
+        <view class="header">
+          <view class="status-tag {{item.status === 2 ? 'replied' : 'pending'}}">
+            {{item.status === 2 ? '已回复' : '待处理'}}
+          </view>
+          <text class="time">{{item.created_at}}</text>
+        </view>
+        <view class="content">{{item.content}}</view>
+        <view wx:if="{{item.reply_content}}" class="reply">
+          <view class="reply-title">管理员回复：</view>
+          <view class="reply-content">{{item.reply_content}}</view>
+        </view>
+      </view>
+    </block>
+    <view wx:if="{{!list || list.length === 0}}" class="empty">暂无反馈记录</view>
+  </view>
+</view>

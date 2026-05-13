@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# Claude Code internal
+.claude/
+.agents/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Build output
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Database files
+*.db
+*.db-shm
+*.db-wal
+
+# Uploads (local test files)
+backend/uploads/*
+!backend/uploads/.gitkeep

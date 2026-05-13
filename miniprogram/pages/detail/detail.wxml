@@ -1,0 +1,37 @@
+<view class="container" wx:if="{{detail}}">
+  <view class="card">
+    <view class="title">{{detail.title}}</view>
+    <view class="sub">{{detail.post_type===1?'失物':'招领'}} | {{detail.occur_location}}</view>
+    <view class="sub">描述：{{detail.detail}}</view>
+
+    <block wx:if="{{detail.images && detail.images.length}}">
+      <view style="margin-top:16rpx;display:flex;gap:12rpx;flex-wrap:wrap;">
+        <block wx:for="{{detail.images}}" wx:key="id">
+          <image style="width:180rpx;height:140rpx;border-radius:12rpx;background:#eee;" src="{{item.imgUrl}}" mode="aspectFill" />
+        </block>
+      </view>
+    </block>
+
+    <view class="sub" style="margin-top:12rpx;">联系方式：{{detail.contact_info || '-'}}</view>
+
+    <view class="sub" style="margin-top:12rpx;">
+      状态：
+      {{detail.status===0?'草稿':detail.status===1?'待审核':detail.status===2?'已发布':detail.status===3?'已驳回':detail.status===4?'已认领':detail.status===5?'已过期':detail.status===6?'已下架':'未知'}}
+    </view>
+
+    <block wx:if="{{detail.status===2}}">
+      <input placeholder="认领验证信息" bindinput="input" value="{{verifyDesc}}" />
+      <button class="btn-primary" bindtap="claim" style="margin-top:12rpx;">发起认领</button>
+    </block>
+    <block wx:else>
+      <view class="sub" style="margin-top:12rpx;color:#888;">当前信息不可认领</view>
+    </block>
+  </view>
+
+  <view class="card">
+    <view class="title">相关推荐</view>
+    <block wx:for="{{rec}}" wx:key="id">
+      <view class="sub">{{item.title}}</view>
+    </block>
+  </view>
+</view>
